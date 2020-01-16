@@ -17,7 +17,7 @@ class Solution {
             $s_arr[$i] = $t_arr_unique[$arr[$s_arr[$i]]];
         }
         $s = implode('', $s_arr);
-        return $s;
+        return $s == $t;
     }
 }
 $s = 'agg';
