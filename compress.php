@@ -24,14 +24,19 @@ class Solution {
                 if ($i == $len -1) {
                     array_push($result, $chars[$fast]);
                     if ($count>1) {
-                        array_push($result, $count);
+                        foreach ($this->transferIntToArr($count) as $value) {
+                            array_push($result, $value);
+                        }
                     };
                 }
             } else {
                 array_push($result, $chars[$fast]);
                 if ($count>1) {
-                    array_push($result, $count);
-                };
+                    foreach ($this->transferIntToArr($count) as $value) {
+                        array_push($result, $value);
+                    }
+                }
+
                 $fast = $i;
                 $count = 1;
                 if ($i == $len -1) {
@@ -39,11 +44,21 @@ class Solution {
                 }
             }
         }
-        print_r($result);
-        return count($result);
+        $chars = $result;
+        return count($chars);
+    }
+
+    function transferIntToArr($num) {
+        $string = (string)$num;
+        if (strlen($string) == 1) {
+            return [$string];
+        }
+        $arr = str_split($string);
+        return $arr;
     }
 }
 
-$chars = ["a", "b", 'b', 'n', 'n'];
+$chars = ["a", "b", 'b', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'];
 $sol = new Solution();
 $sol->compress($chars);
+var_dump($chars);
