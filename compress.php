@@ -10,33 +10,40 @@ class Solution {
      */
     function compress(&$chars) {
         $len = count($chars);
+        if ($len == 1) {
+            return $chars;
+        }
         $fast = 0;
-        $slow = 1;
         $count = 1;
         $result = [];
 
-        for ($i = 0; $i < $len; $i++) {
-//            echo 'fast ' . $fast, PHP_EOL;
-//            echo 'slow ' . $slow, PHP_EOL;
-            if ($chars[$fast] == $chars[$slow]) {
-                $count++;
-                $slow++;
-            } else {
-//                echo 'fast更新 ', $slow, PHP_EOL;
-//                echo $chars[$fast];
-                array_push($result, $chars[$fast]);
-                array_push($result, $count);
-                $fast = $slow;
-                $slow = $fast + 1;
-                $count = 1;
-            }
+        for ($i = 1; $i < $len; $i++) {
 
+            if ($chars[$fast] == $chars[$i]) {
+                $count++;
+                if ($i == $len -1) {
+                    array_push($result, $chars[$fast]);
+                    if ($count>1) {
+                        array_push($result, $count);
+                    };
+                }
+            } else {
+                array_push($result, $chars[$fast]);
+                if ($count>1) {
+                    array_push($result, $count);
+                };
+                $fast = $i;
+                $count = 1;
+                if ($i == $len -1) {
+                    array_push($result, $chars[$i]);
+                }
+            }
         }
+        print_r($result);
         return count($result);
-        //print_r($result);
     }
 }
 
-$chars = ["a","a","b","b","c","c","c"];
+$chars = ["a", "b", 'b', 'n', 'n'];
 $sol = new Solution();
 $sol->compress($chars);
