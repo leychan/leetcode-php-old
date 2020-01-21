@@ -1,3 +1,3 @@
 # leetcode-php
 leetcode training php
-PHP解leetcode题目
+PHP 解 leetcode 题目
