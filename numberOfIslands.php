@@ -51,5 +51,6 @@ $grid = [
     [0, 0, 0, 0, 0]
 ];
 
+
 $solution = new Solution();
 echo $solution->numIslands($grid);
