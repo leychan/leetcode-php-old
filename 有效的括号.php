@@ -49,5 +49,14 @@ class Solution {
         }
         return true;
     }
+
+    function isValid2($s) {
+        while(strpos($s, '()') !== false || strpos($s, '[]') !== false || strpos($s, '{}') !== false) {
+            str_replace('()', '', $s);
+            str_replace('[]', '', $s);
+            str_replace('{}', '', $s);
+        }
+        return $s == '';
+    }
 }
 
