@@ -13,12 +13,15 @@ class Solution {
      * @return String
      */
     static function longestCommonPrefix($strs) {
+        //如果是空数组, 返回''
         if (empty($strs)) {
             return '';
         }
+        //如果数组只有一个元素, 直接返回该元素
         if (count($strs) == 1) {
             return $strs[0];
         }
+        //找到数组中最短的元素, 以该元素为基准进行前缀匹配
         $shortest = $strs[0];
         foreach ($strs as $str) {
             if (strlen($str) < strlen($shortest)) {
