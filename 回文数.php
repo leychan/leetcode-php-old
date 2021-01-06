@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class Solution
+ * 9. 回文数 https://leetcode-cn.com/problems/palindrome-number/
+ */
 class Solution {
 
     /**
@@ -10,6 +14,11 @@ class Solution {
         if ($x < 0) {
             return false;
         }
-        
+        $x_reverse = strrev($x);
+        $x = (string)$x;
+        if ($x_reverse == $x) {
+            return true;
+        }
+        return false;
     }
 }
